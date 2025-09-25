@@ -20,7 +20,7 @@ interface TaxonomyMatch {
     genus: string;
     species: string;
   };
-  database: 'SILVA' | 'PR2' | 'NCBI' | 'BOLD';
+  database: 'GENBANK' | 'BOLD' | 'BOLD';
   metadata?: {
     habitat: string;
     depth: string;
