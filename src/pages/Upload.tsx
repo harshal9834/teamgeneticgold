@@ -104,7 +104,7 @@ const Upload = () => {
                 eDNA Biodiversity Analysis Platform
               </h1>
               <p className="text-xl text-primary-foreground/90 mb-4">
-                Advanced taxonomic classification using SILVA, PR2, and NCBI databases
+                Advanced taxonomic classification using BLAST,GENBANK and BOLD databases
               </p>
               <div className="flex items-center space-x-4 text-primary-foreground/80">
                 <Badge className="bg-primary/20 text-primary border-primary/30 shadow-glow">
