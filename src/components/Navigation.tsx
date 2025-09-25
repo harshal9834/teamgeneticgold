@@ -29,7 +29,7 @@ const Navigation = () => {
               <Microscope className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">BioDiversity AI</h1>
+              <h1 className="text-xl font-bold text-foreground">GENETICGOLD</h1>
               <p className="text-xs text-muted-foreground">eDNA Analysis Platform</p>
             </div>
           </div>
