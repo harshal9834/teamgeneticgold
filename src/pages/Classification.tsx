@@ -42,8 +42,8 @@ const Classification = () => {
 
     // Simulate analysis with progress
     const steps = [
-      { step: 15, message: "Loading SILVA database..." },
-      { step: 30, message: "Loading PR2 database..." },
+      { step: 15, message: "Loading database..." },
+      { step: 30, message: "Loading database..." },
       { step: 50, message: "Performing sequence alignment..." },
       { step: 70, message: "Computing similarity scores..." },
       { step: 85, message: "Taxonomic classification..." },
