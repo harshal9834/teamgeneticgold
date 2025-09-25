@@ -171,7 +171,7 @@ const Classification = () => {
         <div className="text-center">
           <h1 className="text-3xl font-bold text-foreground mb-2">Taxonomic Classification</h1>
           <p className="text-muted-foreground">
-            Match sequences against SILVA, PR2, and NCBI reference databases
+            Match sequences against BLAST,GENBANK and BOLD reference databases
           </p>
         </div>
 
