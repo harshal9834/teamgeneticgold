@@ -71,7 +71,7 @@ const Classification = () => {
           genus: "Thalassiosira",
           species: "Thalassiosira oceanica"
         },
-        database: 'SILVA',
+        database: 'BLAST',
         metadata: {
           habitat: "Marine planktonic",
           depth: "0-200m",
@@ -93,7 +93,7 @@ const Classification = () => {
           genus: "Protoceratium",
           species: "Protoceratium reticulatum"
         },
-        database: 'PR2',
+        database: 'GENBANK',
         metadata: {
           habitat: "Marine, coastal waters",
           depth: "Surface to 100m",
@@ -115,7 +115,7 @@ const Classification = () => {
           genus: "Rhogostoma",
           species: "Rhogostoma sp."
         },
-        database: 'SILVA',
+        database: 'BLAST',
         metadata: {
           habitat: "Deep-sea sediments",
           depth: "1000-4000m",
@@ -137,7 +137,7 @@ const Classification = () => {
           genus: "Unknown",
           species: "Candidate Species 1"
         },
-        database: 'SILVA'
+        database: 'BLAST'
       }
     ];
 
