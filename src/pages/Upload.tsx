@@ -93,37 +93,41 @@ const Upload = () => {
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Hero Section */}
        
-<div className="relative rounded-2xl overflow-hidden shadow-bio mb-12 bg-gradient-ocean">
+{/* Hero Section */}
+<div className="relative rounded-2xl overflow-hidden shadow-lg mb-12 bg-black">
   <img 
     src={heroImage}
-    alt="eDNA Platform Logo"
-    className="w-full h-64 object-contain p-6"
+    alt="eDNA Platform"
+    className="w-full h-64 object-contain opacity-90"
   />
 
-  {/* LIGHT OVERLAY */}
-  <div className="absolute inset-0 bg-black/20 flex items-center">
+  {/* BLACKISH OVERLAY */}
+  <div className="absolute inset-0 bg-black/60 flex items-center">
     <div className="container mx-auto px-8">
       <h1 className="text-4xl font-bold text-white mb-3">
         eDNA Biodiversity Analysis Platform
       </h1>
-      <p className="text-lg text-white/90 mb-4">
+
+      <p className="text-lg text-gray-300 mb-4">
         Advanced taxonomic classification using BLAST, GENBANK and BOLD databases
       </p>
 
       <div className="flex flex-wrap gap-3">
-        <Badge className="bg-white/20 text-white border-white/30">
+        <Badge className="bg-white/10 text-white border-white/20">
           AI-Powered Classification
         </Badge>
-        <Badge className="bg-cyan-400/20 text-cyan-300 border-cyan-300/30">
+        <Badge className="bg-white/10 text-white border-white/20">
           Novelty Detection
         </Badge>
-        <Badge className="bg-green-400/20 text-green-300 border-green-300/30">
+        <Badge className="bg-white/10 text-white border-white/20">
           Real-time Analysis
         </Badge>
       </div>
     </div>
   </div>
 </div>
+
+        
 
 
         <div className="text-center">
