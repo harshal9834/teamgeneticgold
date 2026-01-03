@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/LOGOGDGC.png";
+import logo from "@/assets/FISH-removebg-preview.png";
 
 import { 
   Upload, 
