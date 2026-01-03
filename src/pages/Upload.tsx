@@ -92,34 +92,39 @@ const Upload = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Hero Section */}
-        <div className="relative rounded-2xl overflow-hidden shadow-bio mb-12">
-          <img 
-            src={heroImage} 
-            alt="Deep ocean biodiversity analysis" 
-            className="w-full h-64 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40 flex items-center">
-            <div className="container mx-auto px-8">
-              <h1 className="text-4xl font-bold text-primary-foreground mb-3">
-                eDNA Biodiversity Analysis Platform
-              </h1>
-              <p className="text-xl text-primary-foreground/90 mb-4">
-                Advanced taxonomic classification using BLAST,GENBANK and BOLD databases
-              </p>
-              <div className="flex items-center space-x-4 text-primary-foreground/80">
-                <Badge className="bg-primary/20 text-primary border-primary/30 shadow-glow">
-                  AI-Powered Classification
-                </Badge>
-                <Badge className="bg-accent/20 text-accent border-accent/30 shadow-glow">
-                  Novelty Detection
-                </Badge>
-                <Badge className="bg-success/20 text-success border-success/30 shadow-glow">
-                  Real-time Analysis
-                </Badge>
-              </div>
-            </div>
-          </div>
-        </div>
+       
+<div className="relative rounded-2xl overflow-hidden shadow-bio mb-12 bg-gradient-ocean">
+  <img 
+    src={heroImage}
+    alt="eDNA Platform Logo"
+    className="w-full h-64 object-contain p-6"
+  />
+
+  {/* LIGHT OVERLAY */}
+  <div className="absolute inset-0 bg-black/20 flex items-center">
+    <div className="container mx-auto px-8">
+      <h1 className="text-4xl font-bold text-white mb-3">
+        eDNA Biodiversity Analysis Platform
+      </h1>
+      <p className="text-lg text-white/90 mb-4">
+        Advanced taxonomic classification using BLAST, GENBANK and BOLD databases
+      </p>
+
+      <div className="flex flex-wrap gap-3">
+        <Badge className="bg-white/20 text-white border-white/30">
+          AI-Powered Classification
+        </Badge>
+        <Badge className="bg-cyan-400/20 text-cyan-300 border-cyan-300/30">
+          Novelty Detection
+        </Badge>
+        <Badge className="bg-green-400/20 text-green-300 border-green-300/30">
+          Real-time Analysis
+        </Badge>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         <div className="text-center">
           <h2 className="text-2xl font-bold text-foreground mb-2">Upload & Quality Control</h2>
