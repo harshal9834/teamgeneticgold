@@ -8,8 +8,7 @@ import {
   BarChart3, 
   Sparkles, 
   Globe, 
-  FileText,
-  Microscope 
+  FileText
 } from "lucide-react";
 
 const Navigation = () => {
@@ -26,24 +25,26 @@ const Navigation = () => {
     <nav className="bg-card border-b border-border shadow-bio">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
+
+          {/* LOGO SECTION */}
           <div className="flex items-center space-x-3">
-            
-           <div className="flex items-center space-x-3">
-  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-black">
-    <img
-      src={logo}
-      alt="GeneticGold Logo"
-      className="w-8 h-8 object-contain"
-    />
-  </div>
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-black">
+              <img
+                src={logo}
+                alt="GeneticGold Logo"
+                className="w-8 h-8 object-contain"
+              />
+            </div>
 
-  <div>
-    <h1 className="text-xl font-bold text-foreground">GENETICGOLD</h1>
-    <p className="text-xs text-muted-foreground">eDNA Analysis Platform</p>
-  </div>
-</div>
+            <div>
+              <h1 className="text-xl font-bold text-foreground">GENETICGOLD</h1>
+              <p className="text-xs text-muted-foreground">
+                eDNA Analysis Platform
+              </p>
+            </div>
+          </div>
 
-          
+          {/* NAV LINKS */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <NavLink
@@ -63,10 +64,12 @@ const Navigation = () => {
             ))}
           </div>
 
+          {/* RIGHT BUTTON */}
           <Button variant="outline" size="sm" className="hidden lg:flex">
             <Globe className="w-4 h-4 mr-2" />
             Database Status
           </Button>
+
         </div>
       </div>
     </nav>
