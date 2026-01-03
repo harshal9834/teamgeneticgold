@@ -5,7 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Upload as UploadIcon, FileText, CheckCircle, AlertCircle, BarChart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import heroImage from "@/assets/hero-neon-biodiversity.jpg";
+import heroImage from "@/assets/LOGOGDGC.png";
 
 interface QCStats {
   totalReads: number;
