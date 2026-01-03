@@ -37,7 +37,15 @@ const Navigation = () => {
             </div>
 
             <div>
-              <h1 className="text-xl font-bold text-foreground">GENETICGOLD</h1>
+              <h1 className="text-xl font-extrabold tracking-wide">
+  <span className="text-cyan-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.8)]">
+    GENETIC
+  </span>
+  <span className="ml-1 text-amber-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.9)]">
+    GOLD
+  </span>
+</h1>
+
               <p className="text-xs text-muted-foreground">
                 eDNA Analysis Platform
               </p>
