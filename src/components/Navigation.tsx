@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/LOGOGDGC.png";
+
 import { 
   Upload, 
   Search, 
@@ -25,14 +27,22 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
-            <div className="flex items-center justify-center w-10 h-10 bg-gradient-ocean rounded-lg shadow-glow">
-              <Microscope className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">GENETICGOLD</h1>
-              <p className="text-xs text-muted-foreground">eDNA Analysis Platform</p>
-            </div>
-          </div>
+            
+           <div className="flex items-center space-x-3">
+  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-black">
+    <img
+      src={logo}
+      alt="GeneticGold Logo"
+      className="w-8 h-8 object-contain"
+    />
+  </div>
+
+  <div>
+    <h1 className="text-xl font-bold text-foreground">GENETICGOLD</h1>
+    <p className="text-xs text-muted-foreground">eDNA Analysis Platform</p>
+  </div>
+</div>
+
           
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
