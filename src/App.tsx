@@ -3,9 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Profile from "./pages/Profile";
 
 import Navigation from "./components/Navigation";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import UploadGuard from "./components/UploadGuard";
 
 import Upload from "./pages/Upload";
 import Classification from "./pages/Classification";
@@ -13,12 +15,11 @@ import Insights from "./pages/Insights";
 import Novelty from "./pages/Novelty";
 import Maps from "./pages/Maps";
 import Reports from "./pages/Reports";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 import Login from "./components/Login";
-import PrivateRoute from "./components/PrivateRoute";
-
-import UploadGuard from "./components/UploadGuard";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -30,12 +31,32 @@ const App = () => (
 
       <BrowserRouter>
         <div className="min-h-screen bg-background">
+
+          {/* Navigation should show ONLY when logged in */}
           <Navigation />
 
           <Routes>
 
-            <Route path="/login" element={<Login />} />
+            {/* 🔓 PUBLIC ROUTES */}
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
 
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
+            />
+
+            {/* 🔐 PROTECTED ROUTES */}
             <Route
               path="/"
               element={
@@ -109,8 +130,8 @@ const App = () => (
               }
             />
 
+            {/* 404 */}
             <Route path="*" element={<NotFound />} />
-
           </Routes>
         </div>
       </BrowserRouter>

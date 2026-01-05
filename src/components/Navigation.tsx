@@ -85,10 +85,9 @@ const Navigation = () => {
                       className={({ isActive }) =>
                         `
                         flex items-center space-x-2 px-4 py-2 rounded-lg transition
-                        ${
-                          locked
-                            ? "opacity-40 cursor-not-allowed"
-                            : isActive
+                        ${locked
+                          ? "opacity-40 cursor-not-allowed"
+                          : isActive
                             ? "bg-primary text-primary-foreground shadow"
                             : "text-muted-foreground hover:text-foreground hover:bg-muted"
                         }
@@ -109,24 +108,24 @@ const Navigation = () => {
           {user && (
             <div className="flex items-center space-x-4 flex-none pl-4">
 
-              {/* PROFILE BUTTON */}
               <NavLink to="/profile">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="h-9 rounded-xl flex items-center"
-                >
+                <Button variant="outline" size="sm" className="h-9 rounded-xl">
                   👤
-                  <span className="ml-2 font-medium">Profile</span>
+                  <span className="ml-2 font-medium">
+                    Profile
+                  </span>
                 </Button>
               </NavLink>
 
-              {/* USER NAME */}
+              {/* ⭐ SHOW FULL NAME HERE */}
               <span className="text-sm whitespace-nowrap max-w-[170px] truncate">
-                {user.displayName || user.email}
+                <span className="text-sm whitespace-nowrap max-w-[170px] truncate font-bold">
+                  {user.fullName || user.displayName || user.email}
+
+                </span>
+
               </span>
 
-              {/* LOGOUT */}
               <Button
                 variant="destructive"
                 size="sm"
