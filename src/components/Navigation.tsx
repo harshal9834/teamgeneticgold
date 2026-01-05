@@ -15,8 +15,13 @@ import useAuth from "../hooks/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
+import useUserHasUploads from "../hooks/useUserHasUploads";
+import { useToast } from "@/hooks/use-toast";
+
 const Navigation = () => {
   const { user } = useAuth();
+  const { hasUploads } = useUserHasUploads();
+  const { toast } = useToast();
 
   function handleLogout() {
     signOut(auth);
@@ -47,40 +52,59 @@ const Navigation = () => {
                 <span className="text-cyan-400">GENETIC</span>
                 <span className="ml-1 text-amber-400">GOLD</span>
               </h1>
+
               <p className="text-xs text-muted-foreground">
                 eDNA Analysis Platform
               </p>
             </div>
           </div>
 
-          {/* CENTER — SCROLLABLE NAV */}
+          {/* CENTER — NAV */}
           {user && (
             <div className="flex-1 overflow-x-auto scrollbar-hide">
               <div className="flex items-center space-x-2 w-max">
 
-                {navItems.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    className={({ isActive }) =>
-                      `flex items-center space-x-2 px-4 py-2 rounded-lg transition ${isActive
-                        ? "bg-primary text-primary-foreground shadow"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                      }`
-                    }
-                  >
-                    <item.icon className="w-4 h-4" />
-                    <span className="text-sm font-medium">
-                      {item.label}
-                    </span>
-                  </NavLink>
-                ))}
+                {navItems.map((item) => {
+                  const locked = item.to !== "/" && !hasUploads;
+
+                  return (
+                    <NavLink
+                      key={item.to}
+                      to={locked ? "#" : item.to}
+                      onClick={(e) => {
+                        if (locked) {
+                          e.preventDefault();
+                          toast({
+                            title: "Upload Required",
+                            description:
+                              "Please upload at least one FASTA/FASTQ file first.",
+                            variant: "destructive",
+                          });
+                        }
+                      }}
+                      className={({ isActive }) =>
+                        `
+                        flex items-center space-x-2 px-4 py-2 rounded-lg transition
+                        ${
+                          locked
+                            ? "opacity-40 cursor-not-allowed"
+                            : isActive
+                            ? "bg-primary text-primary-foreground shadow"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        }
+                        `
+                      }
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span className="text-sm font-medium">{item.label}</span>
+                    </NavLink>
+                  );
+                })}
 
               </div>
             </div>
           )}
 
-          {/* RIGHT — USER INFO */}
           {/* RIGHT — USER INFO */}
           {user && (
             <div className="flex items-center space-x-4 flex-none pl-4">
@@ -113,7 +137,6 @@ const Navigation = () => {
               </Button>
             </div>
           )}
-
 
         </div>
       </div>

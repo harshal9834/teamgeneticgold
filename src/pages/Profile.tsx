@@ -1,8 +1,37 @@
+import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import GoogleLogo from "@/assets/download.svg";
 
+import { db, auth } from "../firebase";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+
+interface UploadData {
+  fileName: string;
+  totalReads: number;
+  qualityPassed: number;
+  createdAt?: any;
+}
+
 const Profile = () => {
   const { user } = useAuth();
+  const [uploads, setUploads] = useState<UploadData[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!auth.currentUser) return;
+
+    const q = query(
+      collection(db, "uploads"),
+      where("uid", "==", auth.currentUser.uid)
+    );
+
+    const unsub = onSnapshot(q, (snapshot) => {
+      setUploads(snapshot.docs.map((doc) => doc.data() as UploadData));
+      setLoading(false);
+    });
+
+    return () => unsub();
+  }, []);
 
   return (
     <div className="container mx-auto px-6 py-12">
@@ -32,7 +61,7 @@ const Profile = () => {
             {user?.email}
           </p>
 
-          {/* Status Badge with Google Logo */}
+          {/* Google Badge */}
           <div className="mt-4 flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30">
             <img src={GoogleLogo} alt="Google" className="w-4 h-4 rounded-sm" />
             <span className="text-xs text-primary font-medium">
@@ -49,11 +78,35 @@ const Profile = () => {
             Uploaded Data
           </h2>
 
-          <div className="bg-muted border border-border rounded-xl p-6 text-center">
-            <p className="text-muted-foreground">
-              📂 Your uploaded files will appear here soon.
+          {/* LOADING */}
+          {loading && (
+            <p className="text-muted-foreground text-center">
+              Loading your uploads…
             </p>
-          </div>
+          )}
+
+          {/* NO DATA */}
+          {!loading && uploads.length === 0 && (
+            <div className="bg-muted border border-border rounded-xl p-6 text-center">
+              <p className="text-muted-foreground">
+                📂 You haven’t uploaded any files yet.
+              </p>
+            </div>
+          )}
+
+          {/* DATA EXISTS */}
+          {!loading && uploads.length > 0 && (
+            <div className="space-y-3">
+              {uploads.map((u, i) => (
+                <div key={i} className="bg-muted border border-border rounded-xl p-4">
+                  <p className="font-medium">{u.fileName}</p>
+                  <p className="text-sm text-muted-foreground">
+                    Reads: {u.totalReads?.toLocaleString()}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
       </div>

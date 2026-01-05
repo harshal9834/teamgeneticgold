@@ -18,6 +18,8 @@ import NotFound from "./pages/NotFound";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
+import UploadGuard from "./components/UploadGuard";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -32,10 +34,8 @@ const App = () => (
 
           <Routes>
 
-            {/* PUBLIC LOGIN ROUTE */}
             <Route path="/login" element={<Login />} />
 
-            {/* ALL PROTECTED ROUTES */}
             <Route
               path="/"
               element={
@@ -49,7 +49,9 @@ const App = () => (
               path="/classification"
               element={
                 <PrivateRoute>
-                  <Classification />
+                  <UploadGuard>
+                    <Classification />
+                  </UploadGuard>
                 </PrivateRoute>
               }
             />
@@ -58,7 +60,9 @@ const App = () => (
               path="/insights"
               element={
                 <PrivateRoute>
-                  <Insights />
+                  <UploadGuard>
+                    <Insights />
+                  </UploadGuard>
                 </PrivateRoute>
               }
             />
@@ -67,7 +71,9 @@ const App = () => (
               path="/novelty"
               element={
                 <PrivateRoute>
-                  <Novelty />
+                  <UploadGuard>
+                    <Novelty />
+                  </UploadGuard>
                 </PrivateRoute>
               }
             />
@@ -76,7 +82,9 @@ const App = () => (
               path="/maps"
               element={
                 <PrivateRoute>
-                  <Maps />
+                  <UploadGuard>
+                    <Maps />
+                  </UploadGuard>
                 </PrivateRoute>
               }
             />
@@ -85,12 +93,13 @@ const App = () => (
               path="/reports"
               element={
                 <PrivateRoute>
-                  <Reports />
+                  <UploadGuard>
+                    <Reports />
+                  </UploadGuard>
                 </PrivateRoute>
               }
             />
 
-            {/* 🆕 PROFILE ROUTE */}
             <Route
               path="/profile"
               element={
@@ -100,7 +109,6 @@ const App = () => (
               }
             />
 
-            {/* 404 */}
             <Route path="*" element={<NotFound />} />
 
           </Routes>
